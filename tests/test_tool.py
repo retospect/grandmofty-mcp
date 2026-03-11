@@ -42,7 +42,7 @@ class TestFormatShape:
         assert "Collections" in text
         assert "CoRE" in text
         assert "Sortable fields" in text
-        assert "→ mofty_get" in text
+        assert "→ get" in text
 
 
 class TestFormatSearch:
@@ -51,4 +51,4 @@ class TestFormatSearch:
         text = _format_search(data, elements="Zn")
         assert "MOFs matching" in text
         assert "Shape" in text
-        assert "→ mofty_get" in text
+        assert "→ get" in text

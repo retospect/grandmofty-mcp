@@ -1,4 +1,4 @@
-"""mofty_get implementation — formats query results as markdown strings."""
+"""get implementation — formats query results as markdown strings."""
 
 from __future__ import annotations
 
@@ -25,7 +25,7 @@ def _get_session():
     return _SessionFactory()
 
 
-def mofty_get(
+def get(
     id: str = "",
     query: str = "",
     elements: str = "",
@@ -153,7 +153,7 @@ def _format_id_result(data: dict[str, Any], isotherms: str = "") -> str:
     if refcode:
         if not isotherms and isos:
             lines.append(
-                f'→ mofty_get(id="{refcode}", isotherms="CO2") for specific gas'
+                f'→ get(id="{refcode}", isotherms="CO2") for specific gas'
             )
 
     return "\n".join(lines)
@@ -178,7 +178,7 @@ def _format_disambiguation(data: dict[str, Any]) -> str:
     lines.append("")
     for i, m in enumerate(data["matches"][:3], 1):
         if m.get("refcode"):
-            lines.append(f'→ mofty_get(id="refcode:{m["refcode"]}") for #{i}')
+            lines.append(f'→ get(id="refcode:{m["refcode"]}") for #{i}')
 
     return "\n".join(lines)
 
@@ -217,9 +217,9 @@ def _format_shape(data: dict[str, Any]) -> str:
     lines.append("### Sortable fields")
     lines.append("lcd, pld, sa, vf, name")
     lines.append("")
-    lines.append('→ mofty_get(elements="Zn") to browse zinc MOFs')
-    lines.append('→ mofty_get(lcd="10..", sa=">2000") for large-pore, high-SA MOFs')
-    lines.append('→ mofty_get(query="CO2 capture") for free-text search')
+    lines.append('→ get(elements="Zn") to browse zinc MOFs')
+    lines.append('→ get(lcd="10..", sa=">2000") for large-pore, high-SA MOFs')
+    lines.append('→ get(query="CO2 capture") for free-text search')
 
     return "\n".join(lines)
 
@@ -271,8 +271,8 @@ def _format_search(data: dict[str, Any], **filters) -> str:
     if data["results"]:
         first = data["results"][0]
         if first.get("refcode"):
-            lines.append(f'→ mofty_get(id="{first["refcode"]}") for full details')
+            lines.append(f'→ get(id="{first["refcode"]}") for full details')
     if end < total:
-        lines.append(f"→ mofty_get(..., page={page + 1}) for next {PAGE_SIZE}")
+        lines.append(f"→ get(..., page={page + 1}) for next {PAGE_SIZE}")
 
     return "\n".join(lines)

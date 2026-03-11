@@ -1,4 +1,4 @@
-"""Read-only queries for the mofty_get tool.
+"""Read-only queries for the get tool.
 
 All queries are local SQL — no runtime API calls.
 Shape is computed on-the-fly via SQL aggregation.

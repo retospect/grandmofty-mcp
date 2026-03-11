@@ -1,4 +1,4 @@
-"""MCP server for grandMOFty — one tool: mofty_get.
+"""MCP server for grandMOFty — one tool: get.
 
 Queries Metal-Organic Framework databases (CoRE MOF, hMOF, QMOF, CSD, MP).
 All data is local (Postgres or SQLite). Run ``chemdb sync mofty`` first.
@@ -14,7 +14,7 @@ mcp = FastMCP("grandmofty")
 
 
 @mcp.tool()
-def mofty_get(
+def get(
     id: str = "",
     query: str = "",
     elements: str = "",
@@ -45,7 +45,7 @@ def mofty_get(
     id provided → single MOF detail (id wins; other filters ignored except isotherms).
     Any filter → search with results + shape on page 1.
     """
-    return tool.mofty_get(
+    return tool.get(
         id=id,
         query=query,
         elements=elements,
