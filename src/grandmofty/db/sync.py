@@ -135,7 +135,7 @@ class MoftySyncer:
                     continue
 
             log.info("Loading %s (%s)...", filename, cr_status)
-            with open(path) as f:
+            with open(path, encoding="utf-8") as f:
                 data = json.load(f)
 
             count = 0
