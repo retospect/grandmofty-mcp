@@ -2,10 +2,6 @@
 
 from __future__ import annotations
 
-from unittest.mock import patch
-
-import pytest
-
 from grandmofty.db.query import get_by_id, get_shape, search
 from grandmofty.tool import _format_id_result, _format_search, _format_shape
 

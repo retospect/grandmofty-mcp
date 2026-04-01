@@ -3,8 +3,8 @@
 from __future__ import annotations
 
 import pytest
-
 from chemdb.errors import IdNotFoundError, NoResultsError
+
 from grandmofty.db.query import get_by_id, get_shape, search
 
 

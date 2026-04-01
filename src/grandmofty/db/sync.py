@@ -10,13 +10,13 @@ from __future__ import annotations
 
 import json
 import logging
-import os
 import time
 from datetime import datetime
 from pathlib import Path
 
 from chemdb.config import ChemdbConfig
 from chemdb.db import ensure_schema, make_engine, make_session
+
 from grandmofty.db.schema import SCHEMA, Base, Isotherm, Mof, SyncLog
 
 log = logging.getLogger(__name__)

@@ -152,9 +152,7 @@ def _format_id_result(data: dict[str, Any], isotherms: str = "") -> str:
     lines.append("")
     if refcode:
         if not isotherms and isos:
-            lines.append(
-                f'→ get(id="{refcode}", isotherms="CO2") for specific gas'
-            )
+            lines.append(f'→ get(id="{refcode}", isotherms="CO2") for specific gas')
 
     return "\n".join(lines)
 

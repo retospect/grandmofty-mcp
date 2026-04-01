@@ -9,12 +9,11 @@ from __future__ import annotations
 import re
 from typing import Any
 
-from sqlalchemy import func, text
-from sqlalchemy.orm import Session
-
 from chemdb.errors import IdNotFoundError, InvalidRangeError, NoResultsError
 from chemdb.ranges import parse_range
 from chemdb.sort import parse_sort
+from sqlalchemy import func, text
+from sqlalchemy.orm import Session
 
 from grandmofty.db.schema import Mof
 

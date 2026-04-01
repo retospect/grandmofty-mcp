@@ -6,53 +6,57 @@ build-backend = "hatchling.build"
 name = "grandmofty-mcp"
 version = "0.2.2"
 description = "MCP server for querying Metal-Organic Framework databases"
-requires-python = ">=3.11"
+readme = "README.md"
 license = "GPL-3.0-or-later"
-authors = [{name = "Reto Stamm", email = "reto@retostamm.com"}]
+requires-python = ">=3.11"
+authors = [{ name = "Reto Stamm", email = "reto@retostamm.com" }]
 keywords = ["mcp", "mof", "chemistry", "materials-science", "database"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+
 dependencies = [
     "chemdb-common>=0.1.0",
     "mcp>=1.0",
     "mofdb-client>=0.9",
 ]
 
+[project.urls]
+Homepage = "https://github.com/retospect/grandmofty-mcp"
+Repository = "https://github.com/retospect/grandmofty-mcp"
+
 [project.optional-dependencies]
-postgres = [
-    "psycopg[binary]>=3.0",
-]
-dev = [
-    "pytest>=8.0",
-    "black>=24.0",
-    "ruff>=0.5",
-]
+postgres = ["psycopg[binary]>=3.0"]
 
 [project.scripts]
 grandmofty-mcp = "grandmofty.server:main"
 
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "ruff>=0.11",
+    "mypy>=1.15",
+    "pre-commit>=4",
+]
+
 [tool.hatch.build.targets.wheel]
 packages = ["src/grandmofty"]
 
+[tool.ruff]
+target-version = "py311"
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+check_untyped_defs = true
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-
-[tool.black]
-line-length = 88
-
-[tool.ruff]
-line-length = 88
-
-[tool.bumpversion]
-current_version = "0.2.2"
-commit = true
-tag = true
-tag_name = "v{new_version}"
-
-[[tool.bumpversion.files]]
-filename = "pyproject.toml"
-search = 'version = "{current_version}"'
-replace = 'version = "{new_version}"'
-
-[[tool.bumpversion.files]]
-filename = "src/grandmofty/__init__.py"
-search = '__version__ = "{current_version}"'
-replace = '__version__ = "{new_version}"'
