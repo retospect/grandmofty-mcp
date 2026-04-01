@@ -1,4 +1,4 @@
-"""MCP server for grandMOFty — one tool: get.
+"""MCP server for grandMOFty — one tool: mofty.
 
 Queries Metal-Organic Framework databases (CoRE MOF, hMOF, QMOF, CSD, MP).
 All data is local (Postgres or SQLite). Run ``chemdb sync mofty`` first.
@@ -10,11 +10,11 @@ from mcp.server.fastmcp import FastMCP
 
 from grandmofty import tool
 
-mcp = FastMCP("grandmofty")
+mcp = FastMCP("mofty")
 
 
 @mcp.tool()
-def get(
+def mofty(
     id: str = "",
     query: str = "",
     elements: str = "",
